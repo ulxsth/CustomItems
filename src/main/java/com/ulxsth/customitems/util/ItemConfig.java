@@ -1,7 +1,7 @@
-package com.ulxsth.police_wanted.util;
+package com.ulxsth.customitems.util;
 
 import com.ulxsth.customitems.CustomItemsPlugin;
-import com.ulxsth.police_wanted.model.item.GameItem;
+import com.ulxsth.customitems.model.GameItem;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
