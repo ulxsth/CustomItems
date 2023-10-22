@@ -10,8 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import java.util.Objects;
-
 /*
     ***Command Pattern***
     /cgive <item>: 実行者に指定されたアイテムを1つ渡す
