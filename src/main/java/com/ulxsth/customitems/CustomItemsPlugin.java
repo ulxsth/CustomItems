@@ -1,5 +1,6 @@
 package com.ulxsth.customitems;
 
+import com.ulxsth.customitems.command.CustomGiveItemCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CustomItemsPlugin extends JavaPlugin {
@@ -20,5 +21,8 @@ public final class CustomItemsPlugin extends JavaPlugin {
             throw new IllegalStateException("instance is already initialized");
         }
         instance = this;
+
+        // コマンドの登録
+        getCommand("cgive").setExecutor(new CustomGiveItemCommand());
     }
 }
