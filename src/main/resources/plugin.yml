@@ -2,3 +2,14 @@ name: CustomItems
 version: '${version}'
 main: com.ulxsth.customitems.CustomItems
 api-version: '1.19'
+commands:
+  cgive:
+    description: "カスタムアイテムを与えるよ"
+    usage: "/cgive <player> <item> [amount]"
+    permission: customitems.cgive
+    aliases: [citem]
+
+permissions:
+    customitems.cgive:
+        description: "カスタムアイテムを与えることができるよ"
+        default: op
