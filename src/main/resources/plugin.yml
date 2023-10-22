@@ -5,7 +5,7 @@ api-version: '1.19'
 commands:
   cgive:
     description: "カスタムアイテムを与えるよ"
-    usage: "/cgive <player> <item> [amount]"
+    usage: "/cgive <item> [amount] [player]"
     permission: customitems.cgive
     aliases: [citem]
 
