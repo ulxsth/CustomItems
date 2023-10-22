@@ -72,7 +72,7 @@ public class CustomGiveItemCommand implements CommandExecutor {
         PlayerInventory inventory = player.getInventory();
         inventory.addItem(ItemConfig.getItemById(itemId).createItemStack(amount));
 
-        if(sender.equals(player)) player.sendMessage("§a[INFO] アイテムを受け取りました");
+        if(!sender.equals(player)) player.sendMessage("§a[INFO] アイテムを受け取りました");
         sender.sendMessage("§a[INFO] アイテムを渡しました");
         return true;
     }
