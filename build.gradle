@@ -16,6 +16,9 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven {
+        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
 }
 
 def defaultEncoding = 'UTF-8'
@@ -24,6 +27,7 @@ tasks.withType(GroovyCompile)*.groovyOptions*.encoding = defaultEncoding
 
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT"
+    compileOnly 'de.tr7zw.item-nbt-api:item-nbt-api:2.11.1'
 }
 
 def targetJavaVersion = 17
