@@ -1,6 +1,7 @@
 package com.ulxsth.customitems;
 
 import com.ulxsth.customitems.command.CustomGiveItemCommand;
+import com.ulxsth.customitems.event.UseCircleSwordSlashEvent;
 import com.ulxsth.customitems.util.ItemConfig;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,5 +32,8 @@ public final class CustomItemsPlugin extends JavaPlugin {
 
         // コマンドの登録
         getCommand("cgive").setExecutor(new CustomGiveItemCommand());
+
+        // イベントリスナーの登録
+        getServer().getPluginManager().registerEvents(new UseCircleSwordSlashEvent(), this);
     }
 }
