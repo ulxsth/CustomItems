@@ -12,3 +12,8 @@ katana:
   material: "IRON_SWORD"
   id: "katana"
   name: "刀"
+
+circle_sword:
+  material: "IRON_SWORD"
+  id: "circle_sword"
+  name: "つよい剣"
