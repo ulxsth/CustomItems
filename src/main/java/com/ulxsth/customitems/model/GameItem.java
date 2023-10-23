@@ -49,6 +49,7 @@ public class GameItem {
         ItemStack itemStack = new ItemStack(this.material, amount);
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.displayName(Component.text(this.name));
+        itemMeta.setCustomModelData(this.id);
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;
