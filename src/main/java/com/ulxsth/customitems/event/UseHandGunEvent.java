@@ -37,7 +37,7 @@ public class UseHandGunEvent implements Listener {
                 double y = direction.getY() * i;
                 double z = direction.getZ() * i;
 
-                player.getWorld().spawnParticle(Particle.FLAME, location.add(x, y, z), 1);
+                player.getWorld().spawnParticle(Particle.SMOKE_LARGE, location.clone().add(x, y, z), 1);
             }
         }
     }
