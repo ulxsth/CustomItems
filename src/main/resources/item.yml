@@ -17,3 +17,8 @@ circle_sword:
   id: 4
   material: "IRON_SWORD"
   name: "つよい剣"
+
+hand_gun:
+  id: 5
+  material: "IRON_HOE"
+  name: "ハンドガン"
