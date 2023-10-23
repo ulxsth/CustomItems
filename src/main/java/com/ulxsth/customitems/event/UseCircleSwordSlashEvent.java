@@ -24,6 +24,7 @@ public class UseCircleSwordSlashEvent implements Listener {
 
         if (
             item != null
+            && item.getItemMeta().hasCustomModelData()
             && item.getItemMeta().getCustomModelData() == ITEM_ID
             && event.getAction().name().contains("RIGHT_CLICK")
         ) {
