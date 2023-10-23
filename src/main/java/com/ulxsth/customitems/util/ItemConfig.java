@@ -23,11 +23,11 @@ public class ItemConfig {
         config = YamlConfiguration.loadConfiguration(new File(PATH));
     }
 
-    public static GameItem getItemById(String id) {
+    public static GameItem getItemById(String label) {
         initConfig();
-        ConfigurationSection section = config.getConfigurationSection(id);
+        ConfigurationSection section = config.getConfigurationSection(label);
         if(section == null) {
-            throw new IllegalArgumentException("cant find: " + id);
+            throw new IllegalArgumentException("cant find: " + label);
         }
 
         String materialId = section.getString("material");
