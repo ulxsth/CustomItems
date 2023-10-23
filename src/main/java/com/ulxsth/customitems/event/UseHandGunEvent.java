@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class UseHandGunEvent implements Listener {
     private static final String ITEM_LABEL = "hand_gun";
-    private static final int ITEM_ID = ItemConfig.getItemById(ITEM_LABEL).getId();
+    private static final int ITEM_ID = ItemConfig.getItemByLabel(ITEM_LABEL).getId();
     private static final CustomItemsPlugin plugin = CustomItemsPlugin.getInstance();
 
     @EventHandler

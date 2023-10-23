@@ -37,7 +37,7 @@ public class CustomGiveItemCommand implements CommandExecutor {
         String itemId = args[0];
         GameItem gameItem;
         try {
-            gameItem = ItemConfig.getItemById(itemId);
+            gameItem = ItemConfig.getItemByLabel(itemId);
         } catch(IllegalArgumentException e) {
             sender.sendMessage("§c[ERROR] アイテムが見つかりません");
             return true;
@@ -70,7 +70,7 @@ public class CustomGiveItemCommand implements CommandExecutor {
         ItemStack itemStack = gameItem.createItemStack(amount);
 
         PlayerInventory inventory = player.getInventory();
-        inventory.addItem(ItemConfig.getItemById(itemId).createItemStack(amount));
+        inventory.addItem(ItemConfig.getItemByLabel(itemId).createItemStack(amount));
 
         if(!sender.equals(player)) player.sendMessage("§a[INFO] アイテムを受け取りました");
         sender.sendMessage("§a[INFO] アイテムを渡しました");

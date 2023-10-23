@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class UseCircleSwordSlashEvent implements Listener {
     private static final String ITEM_LABEL = "circle_sword";
-    private static final int ITEM_ID = ItemConfig.getItemById(ITEM_LABEL).getId();
+    private static final int ITEM_ID = ItemConfig.getItemByLabel(ITEM_LABEL).getId();
     private static final CustomItemsPlugin plugin = CustomItemsPlugin.getInstance();
 
     private static final int EFFECT_RANGE = 3;
