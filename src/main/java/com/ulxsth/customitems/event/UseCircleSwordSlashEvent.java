@@ -1,5 +1,7 @@
 package com.ulxsth.customitems.event;
 
+import com.ulxsth.customitems.CustomItemsPlugin;
+import com.ulxsth.customitems.util.ItemConfig;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
@@ -10,8 +12,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class UseCircleSwordSlashEvent implements Listener {
-    private static final String ITEM_NAME = "circle_sword";
+    private static final String ITEM_LABEL = "circle_sword";
+    private static final int ITEM_ID = ItemConfig.getItemById(ITEM_LABEL).getId();
     private static final int EFFECT_RANGE = 3;
+    private static final CustomItemsPlugin plugin = CustomItemsPlugin.getInstance();
 
     @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
@@ -20,7 +24,7 @@ public class UseCircleSwordSlashEvent implements Listener {
 
         if (
             item != null
-            && item.getItemMeta().displayName().equals(ITEM_NAME)
+            && item.getItemMeta().getCustomModelData() == ITEM_ID
             && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             World world = player.getWorld();
