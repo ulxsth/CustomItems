@@ -23,7 +23,7 @@ public class ItemConfig {
         config = YamlConfiguration.loadConfiguration(new File(PATH));
     }
 
-    public static GameItem getItemById(String label) {
+    public static GameItem getItemByLabel(String label) {
         initConfig();
         ConfigurationSection section = config.getConfigurationSection(label);
         if(section == null) {
