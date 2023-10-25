@@ -46,7 +46,7 @@ public class UseHandGunEvent implements Listener {
                 }
 
                 Location checkLocation = location.clone().add(direction.clone().multiply(i));
-                if (!checkLocation.getBlock().getType().isAir()) {
+                if (checkLocation.getBlock().getBoundingBox().contains(checkLocation.toVector())) {
                     // Stop checking when a non-air block is encountered
                     break;
                 }
