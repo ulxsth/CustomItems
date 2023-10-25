@@ -7,7 +7,6 @@ commands:
     description: "カスタムアイテムを与えるよ"
     usage: "/cgive <item> [amount] [player]"
     permission: customitems.cgive
-    aliases: [citem]
 
 permissions:
     customitems.cgive:
