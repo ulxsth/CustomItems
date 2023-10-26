@@ -1,10 +1,8 @@
 package com.ulxsth.customitems.model;
 
 import de.tr7zw.changeme.nbtapi.NBT;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class GameItem {
     private final Material material;
