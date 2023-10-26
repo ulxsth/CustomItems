@@ -16,10 +16,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import java.util.Arrays;
 import java.util.function.Function;
 
 public class UseHandGunEvent implements Listener {
-    private static final String[] AFFECT_LABELS = {"hand_gun"};
+    private static final String[] AFFECT_ITEMS = {"hand_gun"};
     private static final CustomItemsPlugin plugin = CustomItemsPlugin.getInstance();
 
     private static final double DAMAGE = 3;
@@ -36,7 +37,7 @@ public class UseHandGunEvent implements Listener {
 
         if (
             label != null
-            && label.equals(AFFECT_LABELS[0])
+            && Arrays.asList(AFFECT_ITEMS).contains(label)
             && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             Location location = player.getEyeLocation();

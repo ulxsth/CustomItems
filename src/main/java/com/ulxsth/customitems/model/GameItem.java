@@ -1,11 +1,13 @@
 package com.ulxsth.customitems.model;
 
-import de.tr7zw.changeme.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.NBT;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.UUID;
 
 public class GameItem {
     private final String label;
@@ -57,10 +59,11 @@ public class GameItem {
         itemStack.setItemMeta(itemMeta);
 
         // NBTにデータを保存
-        NBTItem nbtItem = new NBTItem(itemStack);
-        nbtItem.setString("label", this.label); // アイテムのラベル
-        nbtItem.setUUID("uuid", java.util.UUID.randomUUID()); // UUID割り振り
+        NBT.modify(itemStack, (nbt) -> {
+            nbt.setString("label", this.label);
+            nbt.setUUID("uuid", UUID.randomUUID());
+        });
 
-        return nbtItem.getItem();
+        return itemStack;
     }
 }

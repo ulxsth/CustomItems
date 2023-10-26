@@ -12,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.function.Function;
 
 public class UseCircleSwordSlashEvent implements Listener {
@@ -31,7 +33,7 @@ public class UseCircleSwordSlashEvent implements Listener {
 
         if (
             label != null
-            && label.equals(AFFECT_ITEMS[0])
+            && Arrays.asList(AFFECT_ITEMS).contains(label)
             && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             World world = player.getWorld();

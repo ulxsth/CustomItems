@@ -34,10 +34,10 @@ public class CustomGiveItemCommand implements CommandExecutor {
         }
 
         // アイテムの検索処理
-        String itemId = args[0];
+        String itemLabel = args[0];
         GameItem gameItem;
         try {
-            gameItem = ItemConfig.getItemByLabel(itemId);
+            gameItem = ItemConfig.getItemByLabel(itemLabel);
         } catch(IllegalArgumentException e) {
             sender.sendMessage("§c[ERROR] アイテムが見つかりません");
             return true;
@@ -70,7 +70,7 @@ public class CustomGiveItemCommand implements CommandExecutor {
         ItemStack itemStack = gameItem.createItemStack(amount);
 
         PlayerInventory inventory = player.getInventory();
-        inventory.addItem(ItemConfig.getItemByLabel(itemId).createItemStack(amount));
+        inventory.addItem(ItemConfig.getItemByLabel(itemLabel).createItemStack(amount));
 
         if(!sender.equals(player)) player.sendMessage("§a[INFO] アイテムを受け取りました");
         sender.sendMessage("§a[INFO] アイテムを渡しました");
