@@ -26,7 +26,7 @@ public class UseCircleSwordSlashEvent implements Listener {
     public void onRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
-        if (item != null) {
+        if (item == null) {
             return;
         }
         String label = NBT.get(item, (Function<ReadableItemNBT, String>) nbt -> nbt.getString("label"));
