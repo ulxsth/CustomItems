@@ -1,6 +1,7 @@
 package com.ulxsth.customitems;
 
 import com.ulxsth.customitems.command.CustomGiveItemCommand;
+import com.ulxsth.customitems.command.DebugCommand;
 import com.ulxsth.customitems.event.UseCircleSwordSlashEvent;
 import com.ulxsth.customitems.event.UseHandGunEvent;
 import com.ulxsth.customitems.util.ItemConfig;
@@ -33,6 +34,7 @@ public final class CustomItemsPlugin extends JavaPlugin {
 
         // コマンドの登録
         getCommand("cgive").setExecutor(new CustomGiveItemCommand());
+        getCommand("debug").setExecutor(new DebugCommand());
 
         // イベントリスナーの登録
         getServer().getPluginManager().registerEvents(new UseCircleSwordSlashEvent(), this);
