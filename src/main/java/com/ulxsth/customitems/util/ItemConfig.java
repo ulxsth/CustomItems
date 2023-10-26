@@ -30,10 +30,10 @@ public class ItemConfig {
             throw new IllegalArgumentException("cant find: " + label);
         }
 
+        String itemLabel = section.getString("label");
         String materialId = section.getString("material");
         String name = section.getString("name");
-        int itemId = section.getInt("id");
 
-        return new GameItem(materialId, name, itemId);
+        return new GameItem(materialId, name, itemLabel);
     }
 }

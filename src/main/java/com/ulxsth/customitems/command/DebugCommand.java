@@ -24,11 +24,11 @@ public class DebugCommand implements CommandExecutor {
             ItemStack itemStack = player.getInventory().getItemInMainHand();
 
             // NBTからデータを取得
-            int id = NBT.get(itemStack, (Function<ReadableItemNBT, Integer>) nbt -> nbt.getInteger("id"));
+            String itemLabel = NBT.get(itemStack, (Function<ReadableItemNBT, String>) nbt -> nbt.getString("label"));
             UUID uuid = NBT.get(itemStack, (Function<ReadableItemNBT, UUID>) nbt -> nbt.getUUID("uuid"));
 
             // データの表示
-            sender.sendMessage("§a[INFO] id: " + id);
+            sender.sendMessage("§a[INFO] label: " + itemLabel);
             sender.sendMessage("§a[INFO] uuid: " + uuid.toString());
         }
 

@@ -8,11 +8,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class GameItem {
+    private final String label;
     private final Material material;
     private final String name;
-    private final int id;
 
-    public GameItem(String materialId, String name, int id) {
+    public GameItem(String materialId, String label, String name) {
+        this.label = label;
         // IDからマテリアルを検索
         Material material = Material.getMaterial(materialId);
         if(material == null) {
@@ -21,13 +22,16 @@ public class GameItem {
 
         this.material = material;
         this.name = name;
-        this.id = id;
     }
 
-    public GameItem(Material material, String name, int id) {
+    public GameItem(String label, Material material, String name) {
+        this.label = label;
         this.material = material;
         this.name = name;
-        this.id = id;
+    }
+
+    public String getLabel() {
+        return label;
     }
 
     public Material getMaterial() {
@@ -36,10 +40,6 @@ public class GameItem {
 
     public String getName() {
         return name;
-    }
-
-    public int getId() {
-        return id;
     }
 
     /**
@@ -58,7 +58,7 @@ public class GameItem {
 
         // NBTにデータを保存
         NBTItem nbtItem = new NBTItem(itemStack);
-        nbtItem.setString("label", this.name); // アイテムのラベル
+        nbtItem.setString("label", this.label); // アイテムのラベル
         nbtItem.setUUID("uuid", java.util.UUID.randomUUID()); // UUID割り振り
 
         return nbtItem.getItem();
