@@ -1,19 +1,24 @@
 baton:
+  label: "baton"
   material: "WOODEN_SWORD"
   name: "警棒"
 
 enhanced_baton:
+  label: "enhanced_baton"
   material: "STONE_SWORD"
   name: "強化警棒"
 
 katana:
+  label: "katana"
   material: "IRON_SWORD"
   name: "刀"
 
 circle_sword:
+  label: "circle_sword"
   material: "IRON_SWORD"
   name: "つよい剣"
 
 hand_gun:
+  label: "hand_gun"
   material: "IRON_HOE"
   name: "ハンドガン"
