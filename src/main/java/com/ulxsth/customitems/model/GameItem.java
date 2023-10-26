@@ -50,7 +50,6 @@ public class GameItem {
      */
     public ItemStack createItemStack(int amount) {
         ItemStack itemStack = new ItemStack(this.material, amount);
-        NBTItem nbtItem = new NBTItem(itemStack);
 
         // アイテムの名前を設定
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -59,6 +58,7 @@ public class GameItem {
         itemStack.setItemMeta(itemMeta);
 
         // NBTにデータを保存
+        NBTItem nbtItem = new NBTItem(itemStack);
         nbtItem.setInteger("id", this.id);
         nbtItem.setUUID("uuid", java.util.UUID.randomUUID());
 
