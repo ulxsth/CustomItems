@@ -9,7 +9,17 @@ commands:
     permission: customitems.cgive
     aliases: [citem]
 
+  debug:
+    description: "デバッグコマンドだよ"
+    usage: "/debug"
+    permission: customitems.debug
+    aliases: [d]
+
 permissions:
     customitems.cgive:
         description: "カスタムアイテムを与えることができるよ"
+        default: op
+
+    customitems.debug:
+        description: "デバッグコマンドを使えるよ"
         default: op
