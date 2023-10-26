@@ -1,6 +1,7 @@
 package com.ulxsth.customitems.model;
 
 import de.tr7zw.changeme.nbtapi.NBT;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Material;
@@ -49,18 +50,18 @@ public class GameItem {
      */
     public ItemStack createItemStack(int amount) {
         ItemStack itemStack = new ItemStack(this.material, amount);
+        NBTItem nbtItem = new NBTItem(itemStack);
 
-        // 表示名を変更
-        TextComponent displayName = Component.text(this.name);
+        // アイテムの名前を設定
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.displayName(displayName);
+        TextComponent itemName = Component.text(this.name);
+        itemMeta.displayName(itemName);
         itemStack.setItemMeta(itemMeta);
 
         // NBTにデータを保存
-        NBT.modify(itemStack, (comp) -> {
-            comp.setInteger("id", this.id);
-        });
+        nbtItem.setInteger("id", this.id);
+        nbtItem.setUUID("uuid", java.util.UUID.randomUUID());
 
-        return itemStack;
+        return nbtItem.getItem();
     }
 }
