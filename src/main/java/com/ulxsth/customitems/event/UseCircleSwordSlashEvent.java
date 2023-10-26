@@ -2,6 +2,8 @@ package com.ulxsth.customitems.event;
 
 import com.ulxsth.customitems.CustomItemsPlugin;
 import com.ulxsth.customitems.util.ItemConfig;
+import de.tr7zw.changeme.nbtapi.NBT;
+import de.tr7zw.changeme.nbtapi.iface.ReadableItemNBT;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
@@ -10,6 +12,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.function.Function;
 
 public class UseCircleSwordSlashEvent implements Listener {
     private static final String ITEM_LABEL = "circle_sword";
@@ -22,11 +26,10 @@ public class UseCircleSwordSlashEvent implements Listener {
     public void onRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
+        int itemId = NBT.get(item, (Function<ReadableItemNBT, Integer>) (nbt) -> nbt.getInteger("id"));
 
         if (
-            item != null
-            && item.getItemMeta().hasCustomModelData()
-            && item.getItemMeta().getCustomModelData() == ITEM_ID
+            itemId == ITEM_ID
             && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             World world = player.getWorld();

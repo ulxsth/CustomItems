@@ -2,6 +2,8 @@ package com.ulxsth.customitems.event;
 
 import com.ulxsth.customitems.CustomItemsPlugin;
 import com.ulxsth.customitems.util.ItemConfig;
+import de.tr7zw.nbtapi.NBT;
+import de.tr7zw.nbtapi.iface.ReadableItemNBT;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -13,6 +15,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
+
+import java.util.function.Function;
 
 public class UseHandGunEvent implements Listener {
     private static final String ITEM_LABEL = "hand_gun";
@@ -26,11 +30,10 @@ public class UseHandGunEvent implements Listener {
     public void onRightClick(PlayerInteractEvent event) {
             Player player = event.getPlayer();
             ItemStack item = event.getItem();
+            int itemId = NBT.get(item, (Function<ReadableItemNBT, Integer>) nbt -> nbt.getInteger("id"));
 
         if (
-                item != null
-                && item.getItemMeta().hasCustomModelData()
-                && item.getItemMeta().getCustomModelData() == ITEM_ID
+                itemId == ITEM_ID
                 && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             Location location = player.getEyeLocation();
