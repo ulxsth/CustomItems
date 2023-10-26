@@ -1,5 +1,6 @@
 package com.ulxsth.customitems.model;
 
+import de.tr7zw.changeme.nbtapi.NBT;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -47,10 +48,10 @@ public class GameItem {
      */
     public ItemStack createItemStack(int amount) {
         ItemStack itemStack = new ItemStack(this.material, amount);
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.displayName(Component.text(this.name));
-        itemMeta.setCustomModelData(this.id);
-        itemStack.setItemMeta(itemMeta);
+        NBT.modify(itemStack, (comp) -> {
+            comp.setString("display.Name", this.name);
+            comp.setInteger("id", this.id);
+        });
 
         return itemStack;
     }
