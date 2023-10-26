@@ -1,7 +1,8 @@
 package com.ulxsth.customitems.event;
 
 import com.ulxsth.customitems.CustomItemsPlugin;
-import com.ulxsth.customitems.util.ItemConfig;
+import de.tr7zw.changeme.nbtapi.NBT;
+import de.tr7zw.changeme.nbtapi.iface.ReadableItemNBT;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
@@ -11,9 +12,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.function.Function;
+
 public class UseCircleSwordSlashEvent implements Listener {
-    private static final String ITEM_LABEL = "circle_sword";
-    private static final int ITEM_ID = ItemConfig.getItemByLabel(ITEM_LABEL).getId();
+    private static final String[] AFFECT_ITEMS = {"circle_sword"};
     private static final CustomItemsPlugin plugin = CustomItemsPlugin.getInstance();
 
     private static final int EFFECT_RANGE = 3;
@@ -22,11 +26,14 @@ public class UseCircleSwordSlashEvent implements Listener {
     public void onRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
+        if (item == null) {
+            return;
+        }
+        String label = NBT.get(item, (Function<ReadableItemNBT, String>) nbt -> nbt.getString("label"));
 
         if (
-            item != null
-            && item.getItemMeta().hasCustomModelData()
-            && item.getItemMeta().getCustomModelData() == ITEM_ID
+            label != null
+            && Arrays.asList(AFFECT_ITEMS).contains(label)
             && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             World world = player.getWorld();

@@ -2,6 +2,8 @@ package com.ulxsth.customitems.event;
 
 import com.ulxsth.customitems.CustomItemsPlugin;
 import com.ulxsth.customitems.util.ItemConfig;
+import de.tr7zw.nbtapi.NBT;
+import de.tr7zw.nbtapi.iface.ReadableItemNBT;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -10,16 +12,15 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import java.util.List;
+import java.util.Arrays;
+import java.util.function.Function;
 
 public class UseHandGunEvent implements Listener {
-    private static final String ITEM_LABEL = "hand_gun";
-    private static final int ITEM_ID = ItemConfig.getItemByLabel(ITEM_LABEL).getId();
+    private static final String[] AFFECT_ITEMS = {"hand_gun"};
     private static final CustomItemsPlugin plugin = CustomItemsPlugin.getInstance();
 
     private static final double DAMAGE = 3;
@@ -29,12 +30,15 @@ public class UseHandGunEvent implements Listener {
     public void onRightClick(PlayerInteractEvent event) {
             Player player = event.getPlayer();
             ItemStack item = event.getItem();
+            if (item == null) {
+                return;
+            }
+            String label = NBT.get(item, (Function<ReadableItemNBT, String>) nbt -> nbt.getString("label"));
 
         if (
-                item != null
-                && item.getItemMeta().hasCustomModelData()
-                && item.getItemMeta().getCustomModelData() == ITEM_ID
-                && event.getAction().name().contains("RIGHT_CLICK")
+            label != null
+            && Arrays.asList(AFFECT_ITEMS).contains(label)
+            && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             Location location = player.getEyeLocation();
             Vector direction = location.getDirection().normalize();

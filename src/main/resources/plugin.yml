@@ -2,13 +2,24 @@ name: CustomItems
 version: '${version}'
 main: com.ulxsth.customitems.CustomItemsPlugin
 api-version: '1.19'
+depend: [NBTAPI]
 commands:
   cgive:
     description: "カスタムアイテムを与えるよ"
     usage: "/cgive <item> [amount] [player]"
     permission: customitems.cgive
 
+  debug:
+    description: "デバッグコマンドだよ"
+    usage: "/debug"
+    permission: customitems.debug
+    aliases: [d]
+
 permissions:
     customitems.cgive:
         description: "カスタムアイテムを与えることができるよ"
+        default: op
+
+    customitems.debug:
+        description: "デバッグコマンドを使えるよ"
         default: op
