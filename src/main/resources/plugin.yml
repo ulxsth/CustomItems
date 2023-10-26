@@ -2,6 +2,7 @@ name: CustomItems
 version: '${version}'
 main: com.ulxsth.customitems.CustomItemsPlugin
 api-version: '1.19'
+depend: [NBTAPI]
 commands:
   cgive:
     description: "カスタムアイテムを与えるよ"

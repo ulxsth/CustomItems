@@ -24,6 +24,7 @@ tasks.withType(GroovyCompile)*.groovyOptions*.encoding = defaultEncoding
 
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT"
+    compileOnly "de.tr7zw:item-nbt-api-plugin:2.12.0"
 
     implementation "de.tr7zw:item-nbt-api:2.12.0"
 }
@@ -54,5 +55,9 @@ processResources {
 }
 
 shadowJar {
-    relocate("de.tr7zw.changeme.nbtapi", group)
+    relocate("de.tr7zw.changeme.nbtapi", "com.ulxsth.nbtapi")
+}
+
+build {
+    dependsOn(shadowJar)
 }
