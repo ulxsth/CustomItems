@@ -13,13 +13,13 @@ public class GameItem {
     private final String name;
 
     public GameItem(String materialId, String label, String name) {
-        this.label = label;
         // IDからマテリアルを検索
         Material material = Material.getMaterial(materialId);
         if(material == null) {
             throw new IllegalArgumentException("materialId is invalid");
         }
 
+        this.label = label;
         this.material = material;
         this.name = name;
     }

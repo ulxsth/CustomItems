@@ -34,6 +34,6 @@ public class ItemConfig {
         String materialId = section.getString("material");
         String name = section.getString("name");
 
-        return new GameItem(materialId, name, itemLabel);
+        return new GameItem(materialId, itemLabel, name);
     }
 }

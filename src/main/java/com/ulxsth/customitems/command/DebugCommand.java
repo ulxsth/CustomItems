@@ -1,20 +1,16 @@
 package com.ulxsth.customitems.command;
 
-import de.tr7zw.changeme.nbtapi.NBT;
-import de.tr7zw.changeme.nbtapi.iface.ReadableItemNBT;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.UUID;
-import java.util.function.Function;
-
 public class DebugCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if(args[0].equals("checkid")) {
+        if(args[0].equals("nbt")) {
             if(!(sender instanceof Player player)) {
                 sender.sendMessage("§c[ERROR] プレイヤーからのみ実行可能です");
                 return true;
@@ -23,13 +19,12 @@ public class DebugCommand implements CommandExecutor {
             // itemStackの取得
             ItemStack itemStack = player.getInventory().getItemInMainHand();
 
-            // NBTからデータを取得
-            String itemLabel = NBT.get(itemStack, (Function<ReadableItemNBT, String>) nbt -> nbt.getString("label"));
-            UUID uuid = NBT.get(itemStack, (Function<ReadableItemNBT, UUID>) nbt -> nbt.getUUID("uuid"));
+            // NBTを表示
+            NBTItem nbtItem = new NBTItem(itemStack);
+            sender.sendMessage("[INFO] " + nbtItem.toString());
 
-            // データの表示
-            sender.sendMessage("§a[INFO] label: " + itemLabel);
-            sender.sendMessage("§a[INFO] uuid: " + uuid.toString());
+        } else {
+            sender.sendMessage("§c[ERROR] 不明なコマンドです");
         }
 
         return true;

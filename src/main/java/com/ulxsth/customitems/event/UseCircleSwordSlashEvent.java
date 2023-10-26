@@ -1,7 +1,6 @@
 package com.ulxsth.customitems.event;
 
 import com.ulxsth.customitems.CustomItemsPlugin;
-import com.ulxsth.customitems.util.ItemConfig;
 import de.tr7zw.changeme.nbtapi.NBT;
 import de.tr7zw.changeme.nbtapi.iface.ReadableItemNBT;
 import org.bukkit.Location;
