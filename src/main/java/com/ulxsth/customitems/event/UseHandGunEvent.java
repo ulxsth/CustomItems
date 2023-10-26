@@ -19,8 +19,7 @@ import org.bukkit.util.Vector;
 import java.util.function.Function;
 
 public class UseHandGunEvent implements Listener {
-    private static final String ITEM_LABEL = "hand_gun";
-    private static final int ITEM_ID = ItemConfig.getItemByLabel(ITEM_LABEL).getId();
+    private static final String[] AFFECT_LABELS = {"hand_gun"};
     private static final CustomItemsPlugin plugin = CustomItemsPlugin.getInstance();
 
     private static final double DAMAGE = 3;
@@ -30,11 +29,15 @@ public class UseHandGunEvent implements Listener {
     public void onRightClick(PlayerInteractEvent event) {
             Player player = event.getPlayer();
             ItemStack item = event.getItem();
-            int itemId = NBT.get(item, (Function<ReadableItemNBT, Integer>) nbt -> nbt.getInteger("id"));
+            if (item == null) {
+                return;
+            }
+            String label = NBT.get(item, (Function<ReadableItemNBT, String>) nbt -> nbt.getString("label"));
 
         if (
-                itemId == ITEM_ID
-                && event.getAction().name().contains("RIGHT_CLICK")
+            label != null
+            && label.equals(AFFECT_LABELS[0])
+            && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             Location location = player.getEyeLocation();
             Vector direction = location.getDirection().normalize();

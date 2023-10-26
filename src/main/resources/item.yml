@@ -1,24 +1,19 @@
 baton:
-  id: 1
   material: "WOODEN_SWORD"
   name: "警棒"
 
 enhanced_baton:
-  id: 2
   material: "STONE_SWORD"
   name: "強化警棒"
 
 katana:
-  id: 3
   material: "IRON_SWORD"
   name: "刀"
 
 circle_sword:
-  id: 4
   material: "IRON_SWORD"
   name: "つよい剣"
 
 hand_gun:
-  id: 5
   material: "IRON_HOE"
   name: "ハンドガン"

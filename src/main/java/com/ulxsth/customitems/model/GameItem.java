@@ -1,6 +1,5 @@
 package com.ulxsth.customitems.model;
 
-import de.tr7zw.changeme.nbtapi.NBT;
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
@@ -59,8 +58,8 @@ public class GameItem {
 
         // NBTにデータを保存
         NBTItem nbtItem = new NBTItem(itemStack);
-        nbtItem.setInteger("id", this.id);
-        nbtItem.setUUID("uuid", java.util.UUID.randomUUID());
+        nbtItem.setString("label", this.name); // アイテムのラベル
+        nbtItem.setUUID("uuid", java.util.UUID.randomUUID()); // UUID割り振り
 
         return nbtItem.getItem();
     }

@@ -16,8 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.function.Function;
 
 public class UseCircleSwordSlashEvent implements Listener {
-    private static final String ITEM_LABEL = "circle_sword";
-    private static final int ITEM_ID = ItemConfig.getItemByLabel(ITEM_LABEL).getId();
+    private static final String[] AFFECT_ITEMS = {"circle_sword"};
     private static final CustomItemsPlugin plugin = CustomItemsPlugin.getInstance();
 
     private static final int EFFECT_RANGE = 3;
@@ -26,10 +25,14 @@ public class UseCircleSwordSlashEvent implements Listener {
     public void onRightClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
-        int itemId = NBT.get(item, (Function<ReadableItemNBT, Integer>) (nbt) -> nbt.getInteger("id"));
+        if (item != null) {
+            return;
+        }
+        String label = NBT.get(item, (Function<ReadableItemNBT, String>) nbt -> nbt.getString("label"));
 
         if (
-            itemId == ITEM_ID
+            label != null
+            && label.equals(AFFECT_ITEMS[0])
             && event.getAction().name().contains("RIGHT_CLICK")
         ) {
             World world = player.getWorld();
